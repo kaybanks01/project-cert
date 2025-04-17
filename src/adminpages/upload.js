@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./upload.css";
-import SideNav from "../component/sidenav.js";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import { useNavigate } from "react-router-dom";
 
@@ -172,6 +171,9 @@ const Upload = () => {
                   <option value="Electronics">Electronics</option>
                   <option value="Clothing">Clothing</option>
                   <option value="Accessories">Accessories</option>
+                  <option value="Footwear">Footwear</option>
+                  <option value="stockings">stockings</option>
+                  <option value="device">devices</option>
                 </select>
                 {errors.category && (
                   <span className="error">{errors.category}</span>

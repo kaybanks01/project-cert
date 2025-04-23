@@ -3,6 +3,7 @@ import { CartContext } from "./CartContext";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./checkout.css";
+import { BASE_URL } from "./util/util";
 
 const Checkout = () => {
   const { cart } = useContext(CartContext);
@@ -24,7 +25,7 @@ const Checkout = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:8000/api/create-checkout-session",
+        `${BASE_URL}/create-checkout-session`,
         {
           cartItems: cart,
         },
@@ -57,7 +58,7 @@ const Checkout = () => {
                 {cart.map((item) => (
                   <div key={item._id} className="cart-item">
                     <img
-                      src={`http://localhost:8000/api/file/${item.image}`}
+                      src={`${BASE_URL}/file/${item.image}`}
                       alt={item.productName}
                     />
                     <div className="item-info">

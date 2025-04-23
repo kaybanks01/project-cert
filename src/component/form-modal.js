@@ -6,6 +6,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import { useNavigate } from "react-router-dom";
+import { BASE_URL } from "../util/util";
 
 const style = {
   position: "absolute",
@@ -88,7 +89,7 @@ export default function BasicModal({ data }) {
     }
 
     try {
-      const response = await fetch("http://localhost:8000/api/users/edit", {
+      const response = await fetch(`${BASE_URL}/users/edit`, {
         method: "PATCH",
         body: JSON.stringify(formData),
         headers: {

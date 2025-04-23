@@ -28,12 +28,11 @@ function App() {
           <Route path="/cart" element={<Cart />} />
           <Route path="/checkout" element={<Checkout />} />
 
-          {/* Admin Route */}
           <Route path="/admin" element={<Admin />}>
             <Route path="dashboard" element={<AdminHome />} />
             <Route path="upload" element={<Upload />} />
             <Route path="products" element={<Product />} />
-            <Route path="users" element={<Users />} /> {/* Added the Users Route */}
+            <Route path="users" element={<Users />} /> 
           </Route>
         </Routes>
       </Router>

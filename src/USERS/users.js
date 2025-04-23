@@ -4,6 +4,7 @@ import BasicModal from "../component/form-modal";
 import { IconButton } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
+import { BASE_URL } from "../util/util";
 
 function Users() {
   const [data, setData] = useState([]);
@@ -13,7 +14,7 @@ function Users() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:8000/api/users", {
+        const response = await fetch(`${BASE_URL}/users`, {
           method: "GET",
         });
         const result = await response.json();
@@ -32,7 +33,7 @@ function Users() {
 
   const handleDelete = async () => {
     try {
-      const response = await fetch(`http://localhost:8000/api/delete/${deleteId}`, {
+      const response = await fetch(`${BASE_URL}/delete/${deleteId}`, {
         method: "DELETE",
       });
       const result = await response.json();

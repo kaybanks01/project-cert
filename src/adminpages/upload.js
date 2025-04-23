@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./upload.css";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import { useNavigate } from "react-router-dom";
+import { BASE_URL } from "../util/util";
 
 const Upload = () => {
   const [formData, setFormData] = useState({
@@ -70,7 +71,7 @@ const Upload = () => {
     formDataobject.append("category", formData.category);
     formDataobject.append("image", formData.image);
 
-    const response = await fetch("http://localhost:8000/api/upload", {
+    const response = await fetch(`${BASE_URL}/upload`, {
       method: "POST",
       // headers: {
       //   "Content-Type": 'multipart/form-data',

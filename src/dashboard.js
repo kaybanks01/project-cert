@@ -6,6 +6,7 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import AlertDialog from "./component/logout-dialog";
 import "./dashboard.css";
+import { BASE_URL } from "./util/util";
 
 function Dashboard() {
   const [data, setData] = useState({});
@@ -15,7 +16,7 @@ function Dashboard() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:8000/api/dashboard", {
+        const response = await fetch(`${BASE_URL}/dashboard`, {
           method: "GET",
           headers: { "Content-Type": "application/json" },
           credentials: "include",
@@ -41,7 +42,7 @@ function Dashboard() {
 
   const confirmLogout = async () => {
     try {
-      await fetch("http://localhost:8000/api/logout", {
+      await fetch(`${BASE_URL}logout`, {
         method: "POST",
         credentials: "include",
       });

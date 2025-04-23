@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { CartContext } from "./CartContext"; 
 import { useNavigate } from "react-router-dom";
 import "./cart.css";
+import { BASE_URL } from "./util/util";
 
 function Cart() {
   const { cart, removeFromCart, increaseQuantity, decreaseQuantity } = useContext(CartContext);
@@ -43,7 +44,7 @@ function Cart() {
                 <tr key={item._id}>
                   <td>
                     <img
-                      src={`http://localhost:8000/api/file/${item.image}`}
+                      src={`${BASE_URL}/file/${item.image}`}
                       alt={item.productName}
                       className="cart-item-image"
                     />
@@ -82,7 +83,7 @@ function Cart() {
                 value={coupon}
                 onChange={(e) => setCoupon(e.target.value)}
               />
-              <button disabled>Apply</button> {/* Add logic later */}
+              <button disabled>Apply</button> 
             </div>
 
             <div className="totals">

@@ -3,6 +3,7 @@ import ProductCard from "./ProductCard";
 import { CartContext } from "./CartContext";
 import "./home.css";
 import { useNavigate } from "react-router-dom";
+import { BASE_URL } from "./util/util";
 
 const CustomerHome = () => {
   const [products, setProducts] = useState([]);
@@ -12,10 +13,10 @@ const CustomerHome = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Fetch products
+    
     const fetchProducts = async () => {
       try {
-        const response = await fetch("http://localhost:8000/api/products");
+        const response = await fetch(`${BASE_URL}/products`);
         const data = await response.json();
         setProducts(data);
       } catch (error) {
@@ -23,10 +24,10 @@ const CustomerHome = () => {
       }
     };
 
-    // Fetch user info
+   
     const fetchUser = async () => {
       try {
-        const response = await fetch("http://localhost:8000/api/dashboard", {
+        const response = await fetch(`${BASE_URL}/dashboard`, {
           method: "GET",
           headers: { "Content-Type": "application/json" },
           credentials: "include",

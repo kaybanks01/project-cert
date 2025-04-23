@@ -1,5 +1,6 @@
 import React from 'react'
 import './deleteconfirmation.css'
+import { BASE_URL } from '../util/util';
 
 const DeleteConfirmationModal = ({ product, onClose, onDelete }) => {
   return (
@@ -8,7 +9,7 @@ const DeleteConfirmationModal = ({ product, onClose, onDelete }) => {
         <h3>Are you sure you want to delete this product?</h3>
         <div className="modal-product-info">
           <img
-            src={`http://localhost:8000/api/file/${product.image}`}
+            src={`${BASE_URL}/file/${product.image}`}
             alt={product.productName}
             className="modal-product-image"
           />

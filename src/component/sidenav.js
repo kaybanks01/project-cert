@@ -36,7 +36,7 @@ function SideNav() {
           to="/admin/users"
           className={`adminmenu-item ${location.pathname === "/admin/users" ? "active" : ""}`}
         >
-          <PeopleIcon /> Users  {/* This is the new link for Users */}
+          <PeopleIcon /> Users 
         </NavLink>
       </nav>
 

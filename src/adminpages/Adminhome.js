@@ -5,22 +5,23 @@ import LocalMallIcon from '@mui/icons-material/LocalMall';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import "./adminhome.css";
+import { BASE_URL } from "../util/util";
 
 function AdminHome() {
   const [users, setUsers] = useState(0);
   const [products, setProducts] = useState(0);
-  const [orders, setOrders] = useState(15); // Placeholder
-  const [revenue, setRevenue] = useState(8200); // Placeholder
+  const [orders, setOrders] = useState(15); 
+  const [revenue, setRevenue] = useState(8200);
 
   useEffect(() => {
-    // Fetch total users
-    fetch("http://localhost:8000/api/users")
+
+    fetch(`${BASE_URL}/users`,)
       .then(res => res.json())
       .then(data => setUsers(data.length))
       .catch(err => console.log("Error fetching users", err));
 
-    // Fetch total products
-    fetch("http://localhost:8000/api/products")
+    
+    fetch(`${BASE_URL}/products`)
       .then(res => res.json())
       .then(data => setProducts(data.length))
       .catch(err => console.log("Error fetching products", err));

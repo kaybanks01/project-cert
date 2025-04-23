@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "./App.css";
+import { BASE_URL } from "./util/util";
 // import image1 from "./images/download (1).png";
 // import image2 from "./images/download.png";
 // import image3 from "./images/logo.png";
@@ -41,7 +42,7 @@ function Signin() {
     setLoading(true);
 
     try {
-      const response = await fetch("http://localhost:8000/api/signin", {
+      const response = await fetch(`${BASE_URL}/signi`, {
         method: "POST",
         body: JSON.stringify(formData),
         headers: { "Content-Type": "application/json" },

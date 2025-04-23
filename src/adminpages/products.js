@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import EditProductModal from './EditProductModal';
 import DeleteConfirmationModal from './DeleteConfirmationModal';
 import './product.css';
+import { BASE_URL } from '../util/util';
 
 const Products = () => {
   const [products, setProducts] = useState([]);
@@ -12,7 +13,7 @@ const Products = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:8000/api/products', {
+        const response = await fetch(`${BASE_URL}/products`, {
           method: "GET",
           credentials: "include"
         });
@@ -28,7 +29,7 @@ const Products = () => {
 
   const handleDelete = async (productId) => {
     try {
-      const response = await fetch(`http://localhost:8000/api/products/${productId}`, {
+      const response = await fetch(`${BASE_URL}/products/${productId}`, {
         method: "DELETE",
       });
 
@@ -52,7 +53,7 @@ const Products = () => {
 
   const handleSaveEdit = async (updatedProduct) => {
     try {
-      const response = await fetch(`http://localhost:8000/api/products/${updatedProduct._id}`, {
+      const response = await fetch(`${BASE_URL}/products/${updatedProduct._id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -82,7 +83,7 @@ const Products = () => {
           products.map((product) => (
             <div className="product-card" key={product._id}>
               <img
-                src={`http://localhost:8000/api/file/${product.image}`}
+                src={`${BASE_URL}/file/${product.image}`}
                 alt={product.productName}
               />
               <h3>{product.productName}</h3>

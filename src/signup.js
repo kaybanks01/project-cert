@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
+import { BASE_URL } from "./util/util";
 // import image1 from "./images/download (1).png";
 // import image2 from "./images/download.png";
 // import image3 from "./images/logo.png";
@@ -21,7 +22,6 @@ function Signup() {
     const { name, value } = event.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
 
-    // Live validation (optional but nice)
     setErrors((prev) => ({ ...prev, [name]: "" }));
   };
 
@@ -64,7 +64,7 @@ function Signup() {
 
     try {
       setSubmitting(true);
-      const response = await fetch("http://localhost:8000/api/signup", {
+      const response = await fetch(`${BASE_URL}/signup`, {
         method: "POST",
         body: JSON.stringify(formData),
         headers: {

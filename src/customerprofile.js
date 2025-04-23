@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./profile.css";
+import { BASE_URL } from "./util/util";
 
 const CustomerProfile = () => {
   const [username, setUsername] = useState("");
@@ -12,10 +13,10 @@ const CustomerProfile = () => {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const response = await fetch("http://localhost:8000/api/dashboard", {
+        const response = await fetch(`${BASE_URL}dashboard`, {
           method: "GET",
           headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`, // or use session
+            Authorization: `Bearer ${localStorage.getItem("token")}`, 
           },
         });
         const data = await response.json();
@@ -39,7 +40,7 @@ const CustomerProfile = () => {
     };
 
     try {
-      const response = await fetch("http://localhost:8000/api/users/edit", {
+      const response = await fetch(`${BASE_URL}/users/edit`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",

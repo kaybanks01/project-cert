@@ -3,6 +3,7 @@ import ProductCard from "./ProductCard";
 import { CartContext } from "./CartContext";
 import "./home.css";
 import { useNavigate } from "react-router-dom";
+import { BASE_URL } from "./util/util";
 
 const Home = () => {
   const [products, setProducts] = useState([]);
@@ -13,7 +14,7 @@ const Home = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:8000/api/products");
+        const response = await fetch(`${BASE_URL}/products`);
         const data = await response.json();
         setProducts(data);
       } catch (error) {
@@ -24,7 +25,6 @@ const Home = () => {
     fetchData();
   }, []);
 
-  
   const filteredProducts = products.filter((product) =>
     product.productName.toLowerCase().includes(searchQuery.toLowerCase())
   );
@@ -34,9 +34,15 @@ const Home = () => {
       <nav className="navbar">
         <h1 className="logo">BMI SHOP</h1>
         <div className="nav-links">
-          <span className="cart-count" onClick={() => navigate("/cart")}>🛒 {cart.length}</span>
-          <button className="btn login-btn" onClick={() => navigate("/auth")}>Login</button>
-          <button className="btn signup-btn" onClick={() => navigate("/auth")}>Signup</button>
+          <span className="cart-count" onClick={() => navigate("/cart")}>
+            🛒 {cart.length}
+          </span>
+          <button className="btn login-btn" onClick={() => navigate("/auth")}>
+            Login
+          </button>
+          <button className="btn signup-btn" onClick={() => navigate("/auth")}>
+            Signup
+          </button>
         </div>
       </nav>
 
@@ -70,6 +76,19 @@ const Home = () => {
           )}
         </div>
       </section>
+
+      <footer className="footer">
+        <div className="footer-content">
+          <p>
+            &copy; {new Date().getFullYear()} BMI SHOP. All rights reserved.
+          </p>
+          <div className="footer-links">
+            <a href="/#">Terms</a>
+            <a href="/#">Privacy</a>
+            <a href="/#">Contact</a>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 };

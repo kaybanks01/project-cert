@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { CartContext } from "./CartContext";
+import { BASE_URL } from "./util/util";
 
 
 const ProductCard = ({ product }) => {
@@ -7,7 +8,7 @@ const ProductCard = ({ product }) => {
 
   return (
     <div className="product-card">
-      <img src={`http://localhost:8000/api/file/${product.image}`} alt={product.productName} />
+      <img src={`${BASE_URL}/file/${product.image}`} alt={product.productName} />
       <h3>{product.productName}</h3>
       <p>{product.productDescription}</p>
       <p>

@@ -7,10 +7,8 @@ function Admin() {
   return (
     <div className="adminbodydash">
       <div className="admin-container">
-        {/* SideNav only here */}
         <SideNav />
         <main className="adminmain-content">
-          {/* The content of admin routes will appear here */}
           <Outlet /> 
         </main>
       </div>
